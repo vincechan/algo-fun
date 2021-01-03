@@ -9,30 +9,34 @@ export const connect_level_order_siblings = function <T>(
   root: BinaryTreeNode<T>
 ) {
   const queue = [] as BinaryTreeNode<T>[];
-  let prev_node = null as BinaryTreeNode<T> | null;
 
   if (root) {
     queue.push(root);
   }
 
   while (queue.length) {
-    // remove node
-    const node = queue.shift() as BinaryTreeNode<T>;
+    let level_size = queue.length;
+    let prev_node = null as BinaryTreeNode<T> | null;
 
-    // connect successor
-    if (prev_node) {
-      prev_node.next = node;
-    }
+    while (level_size--) {
+      // remove node
+      const node = queue.shift() as BinaryTreeNode<T>;
 
-    // add child nodes
-    if (node.left) {
-      queue.push(node.left);
-    }
-    if (node.right) {
-      queue.push(node.right);
-    }
+      // connect successor
+      if (prev_node) {
+        prev_node.next = node;
+      }
 
-    // update prev_node
-    prev_node = node;
+      // add child nodes
+      if (node.left) {
+        queue.push(node.left);
+      }
+      if (node.right) {
+        queue.push(node.right);
+      }
+
+      // update prev_node
+      prev_node = node;
+    }
   }
 };
