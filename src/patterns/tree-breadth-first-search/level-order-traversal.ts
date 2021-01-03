@@ -5,7 +5,9 @@ import { BinaryTreeNode } from "./binary-tree-node";
  *
  * @param root
  */
-export const traverse = function <T>(root: BinaryTreeNode<T>): T[][] {
+export const level_order_traverse = function <T>(
+  root: BinaryTreeNode<T>
+): T[][] {
   const result = [] as T[][];
   const queue = [] as BinaryTreeNode<T>[];
 
