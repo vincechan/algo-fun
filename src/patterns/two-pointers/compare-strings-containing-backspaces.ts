@@ -8,6 +8,11 @@
 export function backspace_compare(str1: string, str2: string): boolean {
   return remove_backspaces(str1) === remove_backspaces(str2);
   //return remove_backspaces_with_two_pointers(str1) === remove_backspaces_with_two_pointers(str2);
+
+  // Another alternative approach that's more performant:
+  //  - walk back from the end of both string at the same time
+  //  - compare char from both string
+  //  - if char diff or either string reach the end first, the strings are diff
 }
 
 function remove_backspaces(input: string): string {
