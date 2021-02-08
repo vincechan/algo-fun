@@ -17,7 +17,7 @@ export function search_next_letter(letters: string[], key: string): string {
     mid = Math.floor(start + (end - start) / 2);
 
     if (letters[mid] === key) {
-      return mid + 1 < letters.length ? letters[mid + 1] : letters[0];
+      return letters[(mid + 1) % letters.length];
     } else if (letters[mid] > key) {
       end = mid - 1;
     } else {
@@ -26,10 +26,10 @@ export function search_next_letter(letters: string[], key: string): string {
   }
 
   // last examined letter (mid) is closest to the key
+  // the next letter greatest than key will either be mid or mid + 1
   if (letters[mid] > key) {
     return letters[mid];
-  } else if (mid + 1 < letters.length) {
-    return letters[mid + 1];
+  } else {
+    return letters[(mid + 1) % letters.length];
   }
-  return letters[0];
 }
