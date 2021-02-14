@@ -21,17 +21,13 @@ export function search_min_diff_element(arr: number[], key: number): number {
     }
   }
 
-  // key is not in arr, the min diff could be on left or right or final inspected element (mid)
-
-  const min_diff = Math.abs(key - arr[mid]);
-
-  // check left
-  if (mid > 0 && Math.abs(key - arr[mid - 1]) < min_diff) {
-    return arr[mid - 1];
+  // at the end of loop, start === end + 1
+  // number closest to key would be pointed to by start or end
+  if (
+    start < arr.length &&
+    Math.abs(key - arr[start]) < Math.abs(key - arr[end])
+  ) {
+    return arr[start];
   }
-  // check right
-  if (mid < arr.length - 1 && Math.abs(key - arr[mid + 1]) < min_diff) {
-    return arr[mid + 1];
-  }
-  return arr[mid];
+  return arr[end];
 }

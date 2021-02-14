@@ -20,4 +20,9 @@ describe("search_min_diff_element", () => {
     const actual = search_min_diff_element([4, 6, 10], 17);
     expect(actual).toEqual(10);
   });
+
+  it("example 5", () => {
+    const actual = search_min_diff_element([4], 4);
+    expect(actual).toEqual(4);
+  });
 });
