@@ -10,7 +10,7 @@ export function search_min_diff_element(arr: number[], key: number): number {
   let start = 0,
     end = arr.length - 1,
     mid = 0;
-  if (start <= end) {
+  while (start <= end) {
     mid = Math.floor(start + (end - start) / 2);
     if (key === arr[mid]) {
       return key;
